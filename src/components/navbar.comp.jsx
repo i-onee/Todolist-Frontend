@@ -14,14 +14,10 @@ const Navbars = () => {
 	return (
 		<Box
 			width='full'
-			paddingY={2}
-			position={'fixed'}
+			p={2}
 			top={0}
-			zIndex={100}
 		>
-			<Container
-				maxW={'container.lg'}
-			>
+			<Container padding={0}>
 				<Flex
 					justifyContent={'space-between'}
 					alignItems={'center'}

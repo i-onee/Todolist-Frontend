@@ -1,26 +1,22 @@
 import { ActivityContext } from '../context/activity.context';
 import { Widget, WidgetBody } from '../components/widget.comp';
-import { Buttons } from '../components/button.comp';
 import Sections from '../components/section.comp';
-import { Modals } from '../components/modal.comp';
 import Lists from '../components/list.comp';
 import { useContext } from 'react';
 import {
 	CgRadioChecked,
 	CgRadioCheck,
-	CgMathPlus,
 } from 'react-icons/cg';
 import {
 	useColorModeValue,
-	useDisclosure,
 	HStack,
 	VStack,
 } from '@chakra-ui/react';
+import Navbars from '../components/navbar.comp';
 
 const MainLayout = () => {
 
 	const { data, activityReq } = useContext(ActivityContext);
-	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	return (
 		<>
@@ -28,13 +24,20 @@ const MainLayout = () => {
 				custom={{
 					bg: useColorModeValue('purple.500', 'purple.400'),
 					color: useColorModeValue('gray.800', 'white'),
+					h: 'xs'
 				}}
 			></Sections>
 			<Sections>
 				<HStack justifyContent={'center'}>
-					<Widget>
+					<Widget
+						custom={{
+							bg: useColorModeValue('gray.100', 'gray.800'),
+							position: 'absolute'
+						}}
+					>
+						<Navbars/>
 						<WidgetBody>
-							<VStack gap={1}>
+							<VStack gap={2}>
 								{
 									data.activity.map((v, i) => {
 										return <Lists
@@ -48,26 +51,10 @@ const MainLayout = () => {
 									})
 								}
 							</VStack>
-							<HStack w={'full'} justifyContent={'center'}>
-								<Buttons
-									clicks={() => onOpen() }
-									custom={{
-										leftIcon: <CgMathPlus/> ,
-										position: 'absolute',
-										padding: '1.3rem',
-										bg: 'purple.600',
-										bottom: -5,
-										w: '7rem',
-									}}
-								>
-									task
-								</Buttons>
-							</HStack>
-						</WidgetBody>
+						</WidgetBody>	
 					</Widget>
 				</HStack>
 			</Sections>
-			<Modals isOpen={isOpen} onClose={onClose}></Modals>
 		</>
 	)
 }

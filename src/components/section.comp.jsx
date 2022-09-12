@@ -7,7 +7,6 @@ const Sections = (props) => {
 			position={'relative'}
 			display={'block'}
 			{...custom}
-			h={'xs'}
 		>
 			<Container maxW={'container.lg'} position={'relative'} display={'block'}>
 				{children}

@@ -1,7 +1,6 @@
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { ActivityProvider } from './context/activity.context';
 import MainLayout from './layouts/main.layout';
-import Navbars from './components/navbar.comp';
 import { mode } from '@chakra-ui/theme-tools';
 
 const App = () => {
@@ -25,7 +24,6 @@ const App = () => {
 	return (
 		<ChakraProvider theme={theme}>
 			<ActivityProvider>
-				<Navbars />
 				<MainLayout />
 			</ActivityProvider>
 		</ChakraProvider>

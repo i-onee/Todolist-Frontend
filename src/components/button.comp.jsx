@@ -4,7 +4,6 @@ const config = {
 	outline: 'none',
 	rounded: 'full',
 	margin: 'none',
-	_active: false,
 	_hover: false,
 	bg: 'none',
 }

@@ -16,12 +16,14 @@ const ActivityProvider = ({ children }) => {
 
 
 	useEffect(() => {
-		const updates = setTimeout(() => dbHandler('updateChecks', data) && console.log(data) , 5000);
+		const updates = setTimeout(() => dbHandler('updateChecks', data) , 1000 * 60);
 		return () => clearInterval(updates) && dbHandler();
+		// eslint-disable-next-line
 		}, [data])
 
 	useEffect(() => {
 		dataHandler();
+		// eslint-disable-next-line
 	}, [reload]);
 
 	const dataHandler = (key, items) => {

@@ -55,7 +55,7 @@ const ActivityProvider = ({ children }) => {
 			default:
 				const res = await axios(url);
 				localStorage.setItem('data', JSON.stringify(res.data));
-				break;
+				break
 		};
 	};
 

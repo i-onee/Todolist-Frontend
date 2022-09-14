@@ -16,6 +16,7 @@ const ActivityProvider = ({ children }) => {
 
 
 	useEffect(() => {
+		dbHandler()
 		const updates = setTimeout(() => dbHandler('updateChecks', data) && console.log(data) , 5000);
 		return () => clearInterval(updates) && dbHandler();
 		}, [data])

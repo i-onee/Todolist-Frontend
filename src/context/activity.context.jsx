@@ -16,7 +16,6 @@ const ActivityProvider = ({ children }) => {
 
 
 	useEffect(() => {
-		dbHandler()
 		const updates = setTimeout(() => dbHandler('updateChecks', data) && console.log(data) , 5000);
 		return () => clearInterval(updates) && dbHandler();
 		}, [data])
@@ -34,12 +33,12 @@ const ActivityProvider = ({ children }) => {
 					}
 					return item;
 				});
-				localStorage.setItem('data', JSON.stringify(newLocal));
+				window.localStorage.setItem('data', JSON.stringify(newLocal));
 				setReload(!reload);
 				break;
 
 			default:
-				const res = JSON.parse(localStorage.getItem('data'));
+				const res = JSON.parse(window.localStorage.getItem('data'));
 				setdata(res);
 				break;
 		}
@@ -55,7 +54,7 @@ const ActivityProvider = ({ children }) => {
 
 			default:
 				const res = await axios(url);
-				localStorage.setItem('data', JSON.stringify(res.data));
+				window.localStorage.setItem('data', JSON.stringify(res.data));
 				break
 		};
 	};

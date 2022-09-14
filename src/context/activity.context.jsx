@@ -12,51 +12,55 @@ const ActivityProvider = ({ children }) => {
 
 	const url = `${config.vercel}/${config.endpoint}`;
 	const [ reload, setReload ] = useState(false);
-	const [ data, setData ] = useState({
-		activity:[]
-	});
+	const [ data, setdata ] = useState([]);
+
 
 	useEffect(() => {
-		activityReq();
+		const updates = setTimeout(() => dbHandler('updateChecks', data) , 10000);
+		return () => clearInterval(updates) && dbHandler();
+		}, [data])
+
+	useEffect(() => {
+		dataHandler();
 	}, [reload]);
 
-	const activityReq = async (key, id) => {
-		
+	const dataHandler = (key, items) => {
 		switch (key) {
-			case 'create':
-				await axios.post(url, {
-					title: '',
-					notes: '',
-				});
-				break;
-
-			case 'delete':
-				await axios.delete(`${url}/${id}`);
-				setData({
-					...data,
-					activity: data.activity.filter((i) => i._id !== id),
-				});
-				break;
-
 			case 'check':
-				const check = data.activity.find((v) => {
-					if (v._id === id) return v.complete
-				})
-				await axios.patch(`${url}/${id}`, { complete: !check });
+				const newLocal = data.map((item) => {
+					if (item._id === items) {
+						return { ...item, complete: !item.complete };
+					}
+					return item;
+				});
+				localStorage.setItem('data', JSON.stringify(newLocal));
 				setReload(!reload);
 				break;
 
 			default:
-				const res = await axios(url);
-				setData({
-					activity : res.data
+				const res = JSON.parse(localStorage.getItem('data'));
+				setdata(res);
+				break;
+		}
+	}
+
+	const dbHandler = async (key, item) => {
+		switch (key) {
+			case 'updateChecks':
+				await item.map(x => {
+					return axios.patch(`${url}/${x._id}`, { complete: x.complete })
 				});
+				break;
+
+			default:
+				const res = await axios(url);
+				localStorage.setItem('data', JSON.stringify(res.data));
 				break;
 		};
 	};
 
 	return (
-		<ActivityContext.Provider value={{ data, activityReq }}>
+		<ActivityContext.Provider value={{ data, dataHandler }}>
 			{children}
 		</ActivityContext.Provider>
 	)

@@ -16,7 +16,7 @@ import Navbars from '../components/navbar.comp';
 
 const MainLayout = () => {
 
-	const { data, activityReq } = useContext(ActivityContext);
+	const { data, dataHandler } = useContext(ActivityContext);
 
 	return (
 		<>
@@ -39,11 +39,11 @@ const MainLayout = () => {
 						<WidgetBody>
 							<VStack gap={2}>
 								{
-									data.activity.map((v, i) => {
+									data.map((v, i) => {
 										return <Lists
 											icheck={v.complete ? <CgRadioChecked /> : <CgRadioCheck />}
-											deletes={() => {activityReq('delete', v._id);}}
-											check={() => {activityReq('check', v._id);}}
+											// deletes={() => {dbHandler('delete', v._id);}}
+											check={() => {dataHandler('check', v._id);}}
 											checked={v.complete ? 's' : ''}
 											title={v.title}
 											key={i}

@@ -16,8 +16,8 @@ const ActivityProvider = ({ children }) => {
 
 
 	useEffect(() => {
-		const updates = setTimeout(() => dbHandler('updateChecks', data) , 1000 * 60);
-		return () => clearInterval(updates) && dbHandler();
+		const updates = setTimeout(() => dbHandler('updateChecks', data) , 1000 * 60 * 60);
+		return () => clearTimeout(updates) && dbHandler();
 		// eslint-disable-next-line
 		}, [data])
 

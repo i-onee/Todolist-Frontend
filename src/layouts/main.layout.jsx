@@ -39,11 +39,10 @@ const MainLayout = () => {
 						<WidgetBody>
 							<VStack gap={2}>
 								{
-									data.map((v, i) => {
+									data.localData.map((v, i) => {
 										return <Lists
 											icheck={v.complete ? <CgRadioChecked /> : <CgRadioCheck />}
-											// deletes={() => {dbHandler('delete', v._id);}}
-											check={() => {dataHandler('check', v._id);}}
+											check={() => dataHandler('check')}
 											checked={v.complete ? 's' : ''}
 											title={v.title}
 											key={i}
@@ -51,7 +50,7 @@ const MainLayout = () => {
 									})
 								}
 							</VStack>
-						</WidgetBody>	
+						</WidgetBody>
 					</Widget>
 				</HStack>
 			</Sections>

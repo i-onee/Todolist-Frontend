@@ -1,11 +1,13 @@
-import { Button, IconButton } from "@chakra-ui/react"
+import { Button, IconButton, useColorModeValue } from "@chakra-ui/react"
 
 const config = {
+	fontWeight: 'medium',
 	outline: 'none',
 	rounded: 'full',
 	margin: 'none',
+	p: '2 !important',
 	_hover: false,
-	bg: 'none',
+	bg: 'none'
 }
 
 
@@ -27,6 +29,7 @@ const IButtons = (props) => {
 
 	return (
 		<IconButton
+			bg={useColorModeValue('whiteAlpha.700', 'blackAlpha.300')}
 			onClick={clicks}
 			icon={icon}
 			{...config}

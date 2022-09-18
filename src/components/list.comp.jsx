@@ -1,6 +1,7 @@
 import { IButtons } from './button.comp';
 import {
-	CgTrash,
+	CgTrashEmpty,
+	CgEye,
 } from 'react-icons/cg';
 import {
 	useColorModeValue,
@@ -11,10 +12,10 @@ import {
 } from '@chakra-ui/react';
 
 const Lists = (props) => {
-	const { title, deletes, check, icheck, checked } = props;
+	const { title, deletes, show, check, icheck, checked } = props;
 	return (
 		<Box
-			bg={useColorModeValue('white', 'gray.700')}
+			bg={useColorModeValue('whiteAlpha.700', 'blackAlpha.500')}
 			display={'block'}
 			rounded={'md'}
 			w={'full'}
@@ -42,7 +43,11 @@ const Lists = (props) => {
 					</Text>
 				</VStack>
 				<IButtons
-					icon={<CgTrash />}
+					icon={<CgEye />}
+					clicks={show}
+				/>
+				<IButtons
+					icon={<CgTrashEmpty />}
 					clicks={deletes}
 				/>
 			</HStack>

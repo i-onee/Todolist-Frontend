@@ -1,4 +1,4 @@
-import { border, FormControl, Input, Textarea, useColorModeValue, VStack } from "@chakra-ui/react"
+import { FormControl, Input, Textarea, useColorModeValue, VStack } from "@chakra-ui/react"
 
 
 const formControl = {
@@ -26,32 +26,42 @@ const textArea = {
 
 
 const FormContainer = (props) => {
-	const { children } = props;
+	const { children, onSubmit} = props;
 	return (
-		<FormControl
-			{...formControl}
-		>
-			<VStack>
-				{children}
-			</VStack>
-		</FormControl>
+		<form onSubmit={onSubmit}>
+			<FormControl
+				{...formControl}
+			>
+				<VStack gap={2}>
+					{children}
+				</VStack>
+			</FormControl>
+		</form>
 	);
 };
 
-const Inputs = () => {
+const Inputs = (props) => {
+	const { refs, onChange } = props;
+
 	return (
 		<Input
 			{...input}
 			bg={useColorModeValue('whiteAlpha.600', 'blackAlpha.400')}
+			onChange={onChange}
+			ref={refs}
 		/>
 	);
 };
 
-const TextAreas = () => {
+const TextAreas = (props) => {
+	const { refs, onChange } = props;
+
 	return (
 		<Textarea
 			{...textArea}
 			bg={useColorModeValue('whiteAlpha.600', 'blackAlpha.400')}
+			onChange={onChange}
+			ref={refs}
 		/>
 	)
 }

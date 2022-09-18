@@ -1,4 +1,4 @@
-import { CgSun, CgMoon } from 'react-icons/cg';
+import { CgSun, CgMoon, CgMathPlus } from 'react-icons/cg';
 import { IButtons } from './button.comp';
 import {
 	useColorMode,
@@ -6,9 +6,11 @@ import {
 	Flex,
 	Text,
 	Box,
+	HStack,
 } from '@chakra-ui/react';
 
-const Navbars = () => {
+const Navbars = (props) => {
+	const {tabAction} = props
 	const { colorMode, toggleColorMode } = useColorMode();
 
 	return (
@@ -27,10 +29,17 @@ const Navbars = () => {
 					>
 						LOGO
 					</Text>
-					<IButtons
-						icon={colorMode === 'light' ? <CgSun fontSize={'1.2rem'} /> : <CgMoon fontSize={'1.2rem'} />}
-						clicks={toggleColorMode}
-					/>
+					<HStack>
+						<IButtons
+							icon={<CgMathPlus />}
+							clicks={tabAction}
+						/>
+						<IButtons
+							icon={colorMode === 'light' ? <CgSun /> : <CgMoon />}
+							clicks={toggleColorMode}
+						/>
+
+					</HStack>
 				</Flex>
 			</Container>
 		</Box>

@@ -12,43 +12,58 @@ const config = {
 const ActivityProvider = ({ children }) => {
 
 	const url = `${config.vercel}/${config.endpoint}`;
-	const [ data, setData ] = useState({
-		localData: [],
-		dbData: [],
-		reload: false,
+	const [ dataDB, setDataDB ] = useState({
+		activity: [],
+		refreshDB: false,
 	});
 
 	useEffect(() => {
-		dbService();
+		dataServices()
 		// eslint-disable-next-line
-	}, [data.reload]);
-	
-	// const matching = data.filter(x => !current.some(y => x._id === y._id));
+	}, [ dataDB.refreshDB ]);
 
-	const dbService = async (key) => {
+	const dataServices = async (key, item) => {
 		switch (key) {
-			default:
-				const res = await axios(url);
-				localStorage.setItem('data', JSON.stringify(res.data));
-				setData({
-					localData: JSON.parse(localStorage.getItem('data')),
-					dbData: res.data,
-				});
+
+			case 'create':
+				await axios.post(url, {
+					title: `${item.title}`,
+					notes: `${item.notes}`
+				})
+				setDataDB({
+					...dataDB,
+					refreshDB: !dataDB.refreshDB
+				})
 				break;
-		}
-	}
-
-	const dataHandler = async (key, item) => {
-		switch (key) {
 
 			case 'check':
-				
+				const checks = dataDB.activity.find( x => x._id === item._id)
+				await axios.patch(`${url}/${item._id}`, { complete: !checks.complete })
+				setDataDB({
+					...dataDB,
+					refreshDB: !dataDB.refreshDB
+				})
 				break;
+			
+			case 'delete':
+				await axios.delete(`${url}/${item._id}`)
+				setDataDB({
+					...dataDB,
+					refreshDB: !dataDB.refreshDB
+				})
+				break
+
+			default:
+				const res = await axios(url);
+				setDataDB({
+					...dataDB,
+					activity: res.data
+				});
 		};
 	};
 
 	return (
-		<ActivityContext.Provider value={{ data, dataHandler }}>
+		<ActivityContext.Provider value={{ dataDB, dataServices }}>
 			{children}
 		</ActivityContext.Provider>
 	);

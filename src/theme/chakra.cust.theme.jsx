@@ -4,7 +4,7 @@ import { mode } from '@chakra-ui/theme-tools';
 const styles = {
 	global: (props) => ({
 		'html, body': {
-			color: mode('gray.600', 'gray.300')(props),
+			color: mode('gray.900', 'white')(props),
 			bg: mode('light.200', 'dark.800')(props),
 			transitionProperty: 'background',
 			fontFamily: 'SF Pro Display',
@@ -29,10 +29,14 @@ const light = {
 	300: '#eff3f5'
 }
 
+const indigo = {
+	200: '#8a4af3'
+}
+
 const theme = extendTheme({
 	config,
 	styles,
-	colors : {light, dark}
+	colors : {light, dark, indigo}
 
 });
 

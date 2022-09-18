@@ -1,26 +1,9 @@
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { ActivityProvider } from './context/activity.context';
+import { ChakraProvider } from '@chakra-ui/react';
 import MainLayout from './layouts/main.layout';
-import { mode } from '@chakra-ui/theme-tools';
+import theme from './theme/chakra.cust.theme';
 
 const App = () => {
-	const styles = {
-		global: (props) => ({
-			'html, body': {
-				color: mode('gray.700', 'white')(props),
-				bg: mode('', 'gray.900')(props),
-				transitionProperty: 'background',
-				fontFamily: 'SF Pro Display',
-				transitionDuration: '0.2s',
-				userSelect: 'none',
-			}
-		}),
-	}
-	const config = {
-		disableTransitionOnChange: false
-	}
-	const theme = extendTheme({ styles, config });
-
 	return (
 		<ChakraProvider theme={theme}>
 			<ActivityProvider>

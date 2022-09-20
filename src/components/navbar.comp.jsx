@@ -1,6 +1,7 @@
-import { CgSun, CgMoon, CgMathPlus } from 'react-icons/cg';
+import { FiSun, FiMoon } from 'react-icons/fi';
 import { IButtons } from './button.comp';
 import {
+	useColorModeValue,
 	useColorMode,
 	Container,
 	Flex,
@@ -10,14 +11,18 @@ import {
 } from '@chakra-ui/react';
 
 const Navbars = (props) => {
-	const {tabAction} = props
 	const { colorMode, toggleColorMode } = useColorMode();
 
 	return (
 		<Box
-			width='full'
-			p={2}
+			bg={useColorModeValue('light.100', 'dark.700')}
+			rounded={'md'}
+			display={'block'}
+			maxW= {'xl'}
+			w= {'95%'}
 			top={0}
+			px={8}
+			py={4}
 		>
 			<Container padding={0}>
 				<Flex
@@ -31,14 +36,9 @@ const Navbars = (props) => {
 					</Text>
 					<HStack>
 						<IButtons
-							icon={<CgMathPlus />}
-							clicks={tabAction}
-						/>
-						<IButtons
-							icon={colorMode === 'light' ? <CgSun /> : <CgMoon />}
+							icon={colorMode === 'light' ? <FiSun /> : <FiMoon />}
 							clicks={toggleColorMode}
 						/>
-
 					</HStack>
 				</Flex>
 			</Container>

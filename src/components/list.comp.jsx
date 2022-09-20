@@ -1,8 +1,8 @@
 import { IButtons } from './button.comp';
 import {
-	CgTrashEmpty,
-	CgEye,
-} from 'react-icons/cg';
+	FiTrash,
+	FiEye,
+} from 'react-icons/fi';
 import {
 	useColorModeValue,
 	HStack,
@@ -15,12 +15,12 @@ const Lists = (props) => {
 	const { title, deletes, show, check, icheck, checked } = props;
 	return (
 		<Box
-			bg={useColorModeValue('whiteAlpha.700', 'blackAlpha.500')}
+			bg={useColorModeValue('light.300', 'blackAlpha.500')}
 			display={'block'}
 			rounded={'md'}
 			w={'full'}
 			px={2}
-			py={3}
+			py={6}
 		>
 			<HStack
 				justifyContent={'space-between'}
@@ -30,8 +30,8 @@ const Lists = (props) => {
 					icon={icheck}
 				/>
 				<VStack
-					w={'full'}
 					alignItems={'start'}
+					w={'full'}
 				>
 					<Text
 						fontWeight={'medium'}
@@ -43,11 +43,11 @@ const Lists = (props) => {
 					</Text>
 				</VStack>
 				<IButtons
-					icon={<CgEye />}
+					icon={<FiEye />}
 					clicks={show}
 				/>
 				<IButtons
-					icon={<CgTrashEmpty />}
+					icon={<FiTrash />}
 					clicks={deletes}
 				/>
 			</HStack>

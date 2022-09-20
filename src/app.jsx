@@ -1,7 +1,7 @@
 import { ActivityProvider } from './context/activity.context';
 import { ChakraProvider } from '@chakra-ui/react';
 import MainLayout from './layouts/main.layout';
-import theme from './theme/chakra.cust.theme';
+import theme from './theme/chakra.theme';
 
 const App = () => {
 	return (

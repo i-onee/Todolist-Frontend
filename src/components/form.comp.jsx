@@ -1,37 +1,12 @@
-import { FormControl, Input, Textarea, useColorModeValue, VStack } from "@chakra-ui/react"
-
-
-const formControl = {
-
-}
-
-const input = {
-	boxShadow: 'none !important',
-	placeholder: 'title',
-	autoComplete: 'off',
-	outline: 'none',
-	border: 0,
-	size: 'md',
-}
-
-const textArea = {
-	boxShadow: 'none !important',
-	placeholder: 'notes',
-	rows: 7,
-	resize: 'none',
-	rounded: 'md',
-	border: 0,
-	size: 'md',
-}
+import { FormControl, Input, Textarea, VStack } from '@chakra-ui/react';
 
 
 const FormContainer = (props) => {
-	const { children, onSubmit} = props;
+	const { children, onSubmit } = props;
+
 	return (
-		<form onSubmit={onSubmit}>
-			<FormControl
-				{...formControl}
-			>
+		<form onSubmit={onSubmit} autoComplete={'off'}>
+			<FormControl>
 				<VStack gap={2}>
 					{children}
 				</VStack>
@@ -41,12 +16,11 @@ const FormContainer = (props) => {
 };
 
 const Inputs = (props) => {
-	const { refs, onChange } = props;
+	const { refs, pHolder, onChange } = props;
 
 	return (
 		<Input
-			{...input}
-			bg={useColorModeValue('whiteAlpha.600', 'blackAlpha.400')}
+			placeholder={pHolder}
 			onChange={onChange}
 			ref={refs}
 		/>
@@ -54,12 +28,11 @@ const Inputs = (props) => {
 };
 
 const TextAreas = (props) => {
-	const { refs, onChange } = props;
+	const { refs, pHolder, onChange } = props;
 
 	return (
 		<Textarea
-			{...textArea}
-			bg={useColorModeValue('whiteAlpha.600', 'blackAlpha.400')}
+			placeholder={pHolder}
 			onChange={onChange}
 			ref={refs}
 		/>

@@ -16,25 +16,27 @@ const FormContainer = (props) => {
 };
 
 const Inputs = (props) => {
-	const { refs, pHolder, onChange } = props;
+	const { refs, pHolder, onChange, as } = props;
 
 	return (
 		<Input
 			placeholder={pHolder}
 			onChange={onChange}
 			ref={refs}
+			as={as}
 		/>
 	);
 };
 
 const TextAreas = (props) => {
-	const { refs, pHolder, onChange } = props;
+	const { refs, pHolder, onChange, as } = props;
 
 	return (
 		<Textarea
 			placeholder={pHolder}
 			onChange={onChange}
 			ref={refs}
+			as={as}
 		/>
 	)
 }

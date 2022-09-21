@@ -4,7 +4,8 @@ const widget = {
 	rounded: 'md',
 	maxW: 'xl',
 	w: '95%',
-	p: 6,
+	px: 8,
+	py: 6,
 };
 
 const widgetBody = {

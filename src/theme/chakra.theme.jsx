@@ -38,7 +38,7 @@ const Button = {
 		rounded: 'full',
 	},
 	sizes: {
-		md: { h: 'auto', w: 'auto', px: 16, py: 2 }
+		md: { h: 0, w: 0, px: 0, py: 0 }
 	},
 	variants: {
 		solid: () => ({
@@ -78,8 +78,18 @@ const Textarea = {
 	},
 };
 
+const Divider = {
+	variants: {
+		solid: {
+			rounded: 'full',
+			borderWidth: 2,
+			my: 4,
+		},
+	},
+};
+
 const theme = extendTheme({
-	components: {Button, Input, Textarea },
+	components: {Button, Input, Textarea, Divider },
 	config: {disableTransitionOnChange: false},
 	colors : {light, dark, indigo},
 	styles,

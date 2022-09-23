@@ -9,8 +9,6 @@ import { useContext, useState } from 'react';
 const Viewtask = () => {
 	const { setTabs, defaultValue, handleValue, isEdit, setIsEdit, handleUpdate } = useContext(EventContext);
 
-	console.log(defaultValue.id)
-
 	return (
 		<>
 			<HStack alignItems={'center'} justifyContent={'space-between'}>

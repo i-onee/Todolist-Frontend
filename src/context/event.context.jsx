@@ -65,9 +65,7 @@ const EventProvider = ({ children }) => {
 		}
 	};
 
-	
-	
-	// showing after clikc edit
+	// showing after click edit button
 	const [ isEdit, setIsEdit ] = useState(false);
 	const handleUpdate = () => {
 		dataServices('update', {

@@ -10,30 +10,86 @@ const EventProvider = ({ children }) => {
 	const { dataServices } = useContext(DataContext);
 	const [ tabs, setTabs ] = useState(1);
 
+	// to handle input value from create lists
+	const titleRef = useRef(null);
+	const notesRef = useRef(null);
 
-	const title = useRef(null);
-	const notes = useRef(null);
-
-	const handleSubmit = (e) => {
+	const handleSubmit = e => {
 		e.preventDefault();
 		dataServices('create', {
-			title: `${title.current.value}`,
-			notes: `${notes.current.value}`
+			title: `${titleRef.current.value}`,
+			notes: `${notesRef.current.value}`
 		});
-		clearSumbit();
+		clearSubmit();
 	};
 
-	const clearSumbit = () => {
-		title.current.value = null;
-		notes.current.value = null;
+	const clearSubmit = () => {
+		titleRef.current.value = null;
+		notesRef.current.value = null;
 	};
+
+	// to bind value from list and set as default value to show at details
+
+	const [ defaultValue, setValue ] = useState({
+		title: null,
+		notes: null,
+		id: null,
+	});
+
+	const getValue = e => {
+		setValue({
+			...defaultValue,
+			title: e.title,
+			notes: e.notes,
+			id: e._id
+		});
+		setTabs(0)
+	};
+
+	// to handle editable new values if chaged at at details
+	const handleValue = (key, newValue) => {
+		switch (key) {
+			case 'title':
+				setValue({
+					...defaultValue,
+					title: newValue,
+				});
+				break;
+
+			case 'notes':
+				setValue({
+					...defaultValue,
+					notes: newValue,
+				});
+				break;
+		}
+	};
+
+	
+	
+	// showing after clikc edit
+	const [ isEdit, setIsEdit ] = useState(false);
+	const handleUpdate = () => {
+		dataServices('update', {
+			_id: defaultValue.id,
+			title: defaultValue.title,
+			notes: defaultValue.notes
+		});
+		setIsEdit(!isEdit)
+	} 
 
 	return (
 		<EventContext.Provider value={{
+			defaultValue,
+			handleUpdate,
 			handleSubmit,
+			handleValue,
+			setIsEdit,
+			getValue,
+			titleRef,
+			notesRef,
 			setTabs,
-			title,
-			notes,
+			isEdit,
 			tabs,
 		}}>
 			{children}

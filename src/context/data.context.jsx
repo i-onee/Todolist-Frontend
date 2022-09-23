@@ -13,21 +13,35 @@ const DataProvider = ({ children }) => {
 
 	const url = `${config.vercel}/${config.endpoint}`;
 	const [ dataDB, setDataDB ] = useState({
-		activity: [],
+		data: [],
 		refreshDB: false,
 	});
 
 	useEffect(() => {
 		dataServices();
-
+		// eslint-disable-next-line
 	}, [ dataDB.refreshDB ]);
 
 	const dataServices = async (key, item) => {
 		switch (key) {
 
 			case 'check':
-				const check = dataDB.activity.find(x => x._id === item._id);
+				const check = dataDB.data.find(x => x._id === item._id);
 				await axios.patch(`${url}/${item._id}`, { complete: !check.complete });
+				setDataDB({
+					...dataDB,
+					refreshDB: !dataDB.refreshDB
+				});
+				break;
+			
+			case 'update':
+				await axios.put(url, {
+					id: item._id,
+					updates: {
+						title: item.title,
+						notes: item.notes
+					}
+				})
 				setDataDB({
 					...dataDB,
 					refreshDB: !dataDB.refreshDB
@@ -57,8 +71,9 @@ const DataProvider = ({ children }) => {
 				const res = await axios(url);
 				setDataDB({
 					...dataDB,
-					activity: res.data
+					data: res.data
 				});
+				break;
 		};
 	};
 

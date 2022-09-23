@@ -9,7 +9,7 @@ import { EventContext } from '../../context/event.context';
 
 const Tasklist = () => {
 	const { dataDB, dataServices } = useContext(DataContext);
-	const { setTabs } = useContext(EventContext);
+	const { setTabs, getValue } = useContext(EventContext);
 
 	return (
 		<>
@@ -21,12 +21,12 @@ const Tasklist = () => {
 			<WidgetBody>
 				<VStack gap={2}>
 					{
-						dataDB.activity.map((v, i) => {
+						dataDB.data.map((v, i) => {
 							const listProp = {
 								icheck  : v.complete ? <FiCheckCircle /> : <FiCircle />,
 								deletes : () => dataServices('delete', { _id: v._id }),
 								check   : () => dataServices('check', { _id: v._id }),
-								show    : () => setTabs(0),
+								show    : getValue.bind(this, v),
 								checked : v.complete && 's',
 								title   : v.title,
 								key     : i

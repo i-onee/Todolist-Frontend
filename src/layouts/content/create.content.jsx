@@ -1,13 +1,13 @@
-import { EventContext } from '../../context/event.context';
-import { useContext } from 'react';
-import { Heading, HStack, Divider } from '@chakra-ui/react';
-import { Buttons, IButtons } from '../../components/button.comp';
-import { WidgetBody } from '../../components/widget.comp';
 import { FormContainer, Inputs, TextAreas } from '../../components/form.comp';
+import { Buttons, IButtons } from '../../components/button.comp';
+import { Heading, HStack, Divider } from '@chakra-ui/react';
+import { EventContext } from '../../context/event.context';
+import { WidgetBody } from '../../components/widget.comp';
 import { FiLayers } from 'react-icons/fi';
+import { useContext } from 'react';
 
 const Createlist = () => {
-	const { setTabs, handleSubmit, title, notes } = useContext(EventContext);
+	const { setTabs, handleSubmit, titleRef, notesRef } = useContext(EventContext);
 
 	return (
 		<>
@@ -18,8 +18,8 @@ const Createlist = () => {
 			<Divider/>
 			<WidgetBody>
 				<FormContainer onSubmit={handleSubmit}>
-					<Inputs refs={title} pHolder={'title'} />
-					<TextAreas refs={notes} pHolder={'notes'} />
+					<Inputs refs={titleRef} pHolder={'title'} />
+					<TextAreas refs={notesRef} pHolder={'notes'} />
 					<HStack justifyContent={'center'}>
 						<Buttons custom={{
 							bg: 'indigo.200',

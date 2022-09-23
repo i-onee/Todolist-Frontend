@@ -1,24 +1,32 @@
 import { Button, IconButton } from '@chakra-ui/react';
 
 const Buttons = (props) => {
-	const { children, clicks, custom } = props;
+	const { children, custom } = props;
+
+	const config = {
+		fontSize: 'sm',
+	};
+
 	return (
-		<Button
-			onClick={clicks}
-			{...custom}
-		>
+		<Button {...config} {...custom}>
 			{children}
 		</Button>
-	)
-}
+	);
+};
 
 const IButtons = (props) => {
-	const { icon, clicks, custom } = props;
+	const { custom } = props;
+
+	const config = {
+		rounded: 'full',
+		h: 'auto',
+		w: 'auto',
+		p: 3,
+	};
 
 	return (
 		<IconButton
-			onClick={clicks}
-			icon={icon}
+			{...config}
 			{...custom}
 		/>
 	)

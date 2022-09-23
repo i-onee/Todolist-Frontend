@@ -4,10 +4,10 @@ import { mode } from '@chakra-ui/theme-tools';
 const styles = {
 	global: (props) => ({
 		body: {
-			background: mode('light.300', 'dark.800')(props),
+			background: mode('light.400', 'dark.800')(props),
 			color: mode('gray.900', 'white')(props),
 			transitionProperty: 'background',
-			fontFamily: 'SF Pro Display',
+			fontFamily: 'SF Pro UI',
 			transitionDuration: '0.2s',
 			position: 'relative',
 			userSelect: 'none',
@@ -17,14 +17,15 @@ const styles = {
 };
 
 const dark = {
-	700: '#2a2d34',
-	800: '#1b1d22',
+	700: '#1c1f24',
+	800: '#121417',
 };
 
 const light = {
-	100: '#ffffff',
+	100: '#fefdfe',
 	200: '#fefefe',
-	300: '#eff3f5'
+	300: '#eff3f5',
+	400: '#f5f7fc'
 };
 
 const indigo = {
@@ -36,6 +37,8 @@ const Button = {
 		fontWeight: 'normal',
 		outline: 'none',
 		rounded: 'full',
+		ml: 0,
+		mr: 0
 	},
 	sizes: {
 		md: { h: 0, w: 0, px: 0, py: 0 }
@@ -83,7 +86,7 @@ const Divider = {
 		solid: {
 			rounded: 'full',
 			borderWidth: 2,
-			my: 4,
+			my: 3,
 		},
 	},
 };

@@ -29,7 +29,6 @@ const EventProvider = ({ children }) => {
 	};
 
 	// to bind value from list and set as default value to show at details
-
 	const [ defaultValue, setValue ] = useState({
 		title: null,
 		notes: null,

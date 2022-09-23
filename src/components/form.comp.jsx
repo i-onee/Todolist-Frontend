@@ -1,11 +1,10 @@
 import { FormControl, Input, Textarea, VStack } from '@chakra-ui/react';
 
-
 const FormContainer = (props) => {
-	const { children, onSubmit } = props;
+	const { children } = props;
 
 	return (
-		<form onSubmit={onSubmit} autoComplete={'off'}>
+		<form autoComplete={'off'}>
 			<FormControl>
 				<VStack gap={2}>
 					{children}

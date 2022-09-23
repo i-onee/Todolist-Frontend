@@ -10,40 +10,28 @@ import {
 	HStack,
 } from '@chakra-ui/react';
 
-const Navbars = (props) => {
+const Navbars = () => {
 	const { colorMode, toggleColorMode } = useColorMode();
 
 	return (
-		<Box
-			bg={useColorModeValue('light.100', 'dark.700')}
-			rounded={'md'}
-			display={'block'}
-			maxW= {'xl'}
-			w= {'95%'}
-			top={0}
-			px={8}
-			py={4}
-		>
+		<Box bg={useColorModeValue('light.100', 'dark.700')} rounded={'md'} display={'block'} maxW={'xl'} w={'95%'} top={0} px={8} py={4}>
 			<Container padding={0}>
-				<Flex
-					justifyContent={'space-between'}
-					alignItems={'center'}
-				>
-					<Text
-						fontWeight={'bold'}
-					>
+				<Flex justifyContent={'space-between'} alignItems={'center'}>
+					<Text fontWeight={'bold'} >
 						LOGO
 					</Text>
 					<HStack>
 						<IButtons
-							icon={colorMode === 'light' ? <FiSun /> : <FiMoon />}
-							clicks={toggleColorMode}
+							custom={{
+								icon: colorMode === 'light' ? <FiSun /> : <FiMoon />,
+								onClick: toggleColorMode,
+							}}
 						/>
 					</HStack>
 				</Flex>
 			</Container>
 		</Box>
-	)
-}
+	);
+};
 
 export default Navbars;

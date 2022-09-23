@@ -33,7 +33,7 @@ const DataProvider = ({ children }) => {
 					refreshDB: !dataDB.refreshDB
 				});
 				break;
-			
+
 			case 'update':
 				await axios.put(url, {
 					id: item._id,

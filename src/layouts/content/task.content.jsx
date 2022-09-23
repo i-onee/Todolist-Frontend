@@ -1,11 +1,11 @@
-import { FiCheckCircle, FiCircle, FiPlus } from 'react-icons/fi';
+import { WidgetBody, WidgetHeader, WidgetFooter } from '../../components/widget.comp';
 import { Heading, HStack, VStack, Divider } from '@chakra-ui/react';
-import { WidgetBody } from '../../components/widget.comp';
+import { FiCheckCircle, FiCircle, FiPlus } from 'react-icons/fi';
+import { EventContext } from '../../context/event.context';
 import { DataContext } from '../../context/data.context';
 import { IButtons } from '../../components/button.comp';
 import Lists from '../../components/list.comp';
 import { useContext } from 'react';
-import { EventContext } from '../../context/event.context';
 
 const Tasklist = () => {
 	const { dataDB, dataServices } = useContext(DataContext);
@@ -13,13 +13,20 @@ const Tasklist = () => {
 
 	return (
 		<>
-			<HStack alignItems={'center'} justifyContent={'space-between'}>
-				<Heading size={'md'} fontWeight={'medium'}>task list</Heading>
-				<IButtons icon={<FiPlus />} clicks={() => setTabs(2)}/>
-			</HStack>
+			<WidgetHeader>
+				<HStack alignItems={'center'} justifyContent={'space-between'}>
+					<Heading size={'md'} fontWeight={'medium'}>task list</Heading>
+					<IButtons
+						custom={{
+							onClick: () => setTabs(2),
+							icon: <FiPlus/>
+						}}
+					/>
+				</HStack>
+			</WidgetHeader>
 			<Divider/>
 			<WidgetBody>
-				<VStack gap={2}>
+				<VStack gap={1}>
 					{
 						dataDB.data.map((v, i) => {
 							const listProp = {
@@ -36,6 +43,10 @@ const Tasklist = () => {
 					}
 				</VStack>
 			</WidgetBody>
+			<Divider />
+			<WidgetFooter>
+				FOOTER
+			</WidgetFooter>
 		</>
 	);
 };

@@ -1,15 +1,13 @@
-import { Box, useColorModeValue } from '@chakra-ui/react';
+import { Box, useColorModeValue, VStack } from '@chakra-ui/react';
 
 const Widget = (props) => {
 	const { children } = props;
-
 	const config = {
 		bg: useColorModeValue('light.100', 'dark.700'),
 		rounded: 'md',
 		maxW: 'xl',
-		w: '95%',
-		px: 8,
-		py: 6,
+		w: 'full',
+		px: 4,
 	};
 
 	return (
@@ -21,8 +19,11 @@ const Widget = (props) => {
 
 const WidgetHeader = (props) => {
 	const { children } = props;
+	const config = {
+		w: 'full'
+	}
 	return (
-		<Box>
+		<Box {...config}>
 			{children}
 		</Box>
 	);
@@ -36,6 +37,7 @@ const WidgetBody = (props) => {
 		display: 'block',
 		rounded: 'md',
 		h: '16rem',
+		w: 'full',
 		sx: {
 			'::-webkit-scrollbar': {
 				display: 'none'
@@ -52,8 +54,11 @@ const WidgetBody = (props) => {
 
 const WidgetFooter = (props) => {
 	const { children } = props;
+	const config = {
+		w: 'full'
+	}
 	return (
-		<Box>
+		<Box {...config}>
 			{children}
 		</Box>
 	)

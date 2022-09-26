@@ -1,5 +1,4 @@
-import { TabContent, TabContainer } from '../components/tab.comp';
-import { HStack, useColorModeValue, VStack } from '@chakra-ui/react';
+import { HStack, TabPanels, TabPanel, Tabs, useColorModeValue, VStack } from '@chakra-ui/react';
 import { EventContext } from '../context/event.context';
 import { Widget } from '../components/widget.comp';
 import Sections from '../components/section.comp';
@@ -14,23 +13,19 @@ const MainLayout = () => {
 
 	return (
 		<>
-			<Sections custom={{ color: useColorModeValue('gray.800', 'white'), bg: 'indigo.200', h: 'xs' }} />
+			<Sections custom={{ color: useColorModeValue('gray.800', 'white'), bgGradient: 'linear(to-r, violet.300, indigo.300)', h: 'xs' }} />
 			<Sections>
 				<HStack justifyContent={'center'}>
 					<VStack justifyContent={'center'} position={'absolute'} gap={2} maxW={'xl'} w={'95%'} top={-60} >
 						<Navbars />
 						<Widget>
-							<TabContainer index={tabs}>
-								<TabContent>
-									<Viewtask />
-								</TabContent>
-								<TabContent>
-									<Tasklist />
-								</TabContent>
-								<TabContent>
-									<Createlist />
-								</TabContent>
-							</TabContainer>
+							<Tabs index={tabs}>
+								<TabPanels>
+									<TabPanel><Viewtask/></TabPanel>
+									<TabPanel><Tasklist/></TabPanel>
+									<TabPanel><Createlist/></TabPanel>
+								</TabPanels>
+							</Tabs>
 						</Widget>
 					</VStack>
 				</HStack>

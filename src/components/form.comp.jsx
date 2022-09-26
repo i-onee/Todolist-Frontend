@@ -37,7 +37,7 @@ const TextAreas = (props) => {
 			ref={refs}
 			as={as}
 		/>
-	)
-}
+	);
+};
 
 export { FormContainer, Inputs, TextAreas };

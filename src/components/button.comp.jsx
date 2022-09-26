@@ -19,17 +19,15 @@ const IButtons = (props) => {
 
 	const config = {
 		rounded: 'full',
-		h: 'auto',
+		fontSize: '1.1rem',
+		p: 2,
 		w: 'auto',
-		p: 3,
+		h: 'auto'
 	};
 
 	return (
-		<IconButton
-			{...config}
-			{...custom}
-		/>
-	)
-}
+		<IconButton {...config} {...custom} />
+	);
+};
 
 export { Buttons, IButtons };

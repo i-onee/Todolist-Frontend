@@ -8,7 +8,7 @@ const Sections = (props) => {
 				{children}
 			</Container>
 		</Stack>
-	)
-}
+	);
+};
 
 export default Sections;

@@ -1,7 +1,5 @@
+import { useRef, useState, useContext, createContext } from 'react';
 import { DataContext } from './data.context';
-import { useRef, useState } from 'react';
-import { createContext } from 'react';
-import { useContext } from 'react';
 
 const EventContext = createContext();
 
@@ -61,7 +59,7 @@ const EventProvider = ({ children }) => {
 					notes: newValue,
 				});
 				break;
-		}
+		};
 	};
 
 	// showing after click edit button
@@ -73,7 +71,7 @@ const EventProvider = ({ children }) => {
 			notes: defaultValue.notes
 		});
 		setIsEdit(!isEdit)
-	} 
+	};
 
 	return (
 		<EventContext.Provider value={{

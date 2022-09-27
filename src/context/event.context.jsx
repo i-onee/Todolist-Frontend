@@ -6,85 +6,67 @@ const EventContext = createContext();
 const EventProvider = ({ children }) => {
 
 	const { dataServices } = useContext(DataContext);
-	const [ tabs, setTabs ] = useState(1);
-
-	// to handle input value from create lists
+	const [ tabs, setTabs ] = useState(2);
 	const titleRef = useRef(null);
 	const notesRef = useRef(null);
-
-	const handleSubmit = e => {
-		e.preventDefault();
-		dataServices('create', {
-			title: `${titleRef.current.value}`,
-			notes: `${notesRef.current.value}`
-		});
-		clearSubmit();
-	};
-
-	const clearSubmit = () => {
-		titleRef.current.value = null;
-		notesRef.current.value = null;
-	};
-
-	// to bind value from list and set as default value to show at details
 	const [ defaultValue, setValue ] = useState({
 		title: null,
 		notes: null,
 		id: null,
 	});
 
-	const getValue = e => {
-		setValue({
-			...defaultValue,
-			title: e.title,
-			notes: e.notes,
-			id: e._id
-		});
-		setTabs(0)
-	};
-
-	// to handle editable new values if chaged at at details
-	const handleValue = (key, newValue) => {
+	const handleEvent = (key, e) => {
 		switch (key) {
+			case 'create':
+				dataServices('create', {
+					title : `${titleRef.current.value}`,
+					notes : `${notesRef.current.value}`,
+				});
+				clearForm();
+				break;
+			case 'update':
+				dataServices('update', {
+					title : defaultValue.title,
+					notes : defaultValue.notes,
+					_id	: defaultValue.id,
+				});
+				setTabs(1);
+				break;
+			case 'value':
+				setValue({
+					...defaultValue,
+					title : e.title,
+					notes : e.notes,
+					id    : e._id,
+				});
+				setTabs(1)
+				break;
 			case 'title':
 				setValue({
 					...defaultValue,
-					title: newValue,
+					title : e.target.value,
 				});
 				break;
-
 			case 'notes':
 				setValue({
 					...defaultValue,
-					notes: newValue,
+					notes : e.target.value,
 				});
 				break;
 		};
 	};
 
-	// showing after click edit button
-	const [ isEdit, setIsEdit ] = useState(false);
-	const handleUpdate = () => {
-		dataServices('update', {
-			_id: defaultValue.id,
-			title: defaultValue.title,
-			notes: defaultValue.notes
-		});
-		setIsEdit(!isEdit)
+	const clearForm = () => {
+		titleRef.current.value = null;
+		notesRef.current.value = null;
 	};
-
 	return (
 		<EventContext.Provider value={{
 			defaultValue,
-			handleUpdate,
-			handleSubmit,
-			handleValue,
-			setIsEdit,
-			getValue,
-			titleRef,
+			handleEvent,
 			notesRef,
+			titleRef,
 			setTabs,
-			isEdit,
 			tabs,
 		}}>
 			{children}

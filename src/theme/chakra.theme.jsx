@@ -119,7 +119,7 @@ const Textarea = {
 	variants: {
 		outline: (props) => ({
 			bg: mode('light.300', 'blackAlpha.500')(props),
-			height: '12rem',
+			height: '13.3rem',
 			resize: 'none',
 			border: 0,
 			_focus: {
@@ -133,7 +133,7 @@ const Divider = {
 	variants: {
 		solid: {
 			rounded: 'full',
-			borderWidth: 2,
+			borderWidth: 3,
 			my: 3,
 		},
 	},

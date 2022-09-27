@@ -2,7 +2,6 @@ import { FormControl, Input, Textarea, VStack } from '@chakra-ui/react';
 
 const FormContainer = (props) => {
 	const { children } = props;
-
 	return (
 		<form autoComplete={'off'}>
 			<FormControl>
@@ -15,12 +14,12 @@ const FormContainer = (props) => {
 };
 
 const Inputs = (props) => {
-	const { refs, pHolder, onChange, as } = props;
-
+	const { refs, pHolder, onChange, value, as } = props;
 	return (
 		<Input
 			placeholder={pHolder}
 			onChange={onChange}
+			value={value}
 			ref={refs}
 			as={as}
 		/>
@@ -28,12 +27,12 @@ const Inputs = (props) => {
 };
 
 const TextAreas = (props) => {
-	const { refs, pHolder, onChange, as } = props;
-
+	const { refs, pHolder, onChange, value, as } = props;
 	return (
 		<Textarea
 			placeholder={pHolder}
 			onChange={onChange}
+			value={value}
 			ref={refs}
 			as={as}
 		/>

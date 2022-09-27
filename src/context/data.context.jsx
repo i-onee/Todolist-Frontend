@@ -10,7 +10,6 @@ const config = {
 }
 
 const DataProvider = ({ children }) => {
-
 	const url = `${config.vercel}/${config.endpoint}`;
 	const [ dataDB, setDataDB ] = useState({
 		data: [],
@@ -24,7 +23,6 @@ const DataProvider = ({ children }) => {
 
 	const dataServices = async (key, item) => {
 		switch (key) {
-
 			case 'check':
 				const check = dataDB.data.find(x => x._id === item._id);
 				await axios.patch(`${url}/${item._id}`, { complete: !check.complete });
@@ -33,7 +31,6 @@ const DataProvider = ({ children }) => {
 					refreshDB: !dataDB.refreshDB
 				});
 				break;
-
 			case 'update':
 				await axios.put(url, {
 					id: item._id,
@@ -41,13 +38,12 @@ const DataProvider = ({ children }) => {
 						title: item.title,
 						notes: item.notes
 					}
-				})
+				});
 				setDataDB({
 					...dataDB,
 					refreshDB: !dataDB.refreshDB
 				});
 				break;
-
 			case 'delete':
 				await axios.delete(`${url}/${item._id}`);
 				setDataDB({
@@ -55,7 +51,6 @@ const DataProvider = ({ children }) => {
 					refreshDB: !dataDB.refreshDB
 				});
 				break;
-
 			case 'create':
 				await axios.post(url, {
 					title: `${item.title}`,
@@ -66,7 +61,6 @@ const DataProvider = ({ children }) => {
 					refreshDB: !dataDB.refreshDB
 				});
 				break;
-
 			default:
 				const res = await axios(url);
 				setDataDB({
@@ -76,7 +70,6 @@ const DataProvider = ({ children }) => {
 				break;
 		};
 	};
-
 	return (
 		<DataContext.Provider value={{ dataDB, dataServices }}>
 			{children}

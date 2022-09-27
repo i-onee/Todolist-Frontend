@@ -4,7 +4,6 @@ import { IButtons } from './button.comp';
 
 const Navbars = () => {
 	const { colorMode, toggleColorMode } = useColorMode();
-
 	return (
 		<Box bg={useColorModeValue('light.100', 'dark.700')} rounded={'md'} display={'block'} maxW={'xl'} w={'full'} top={0} px={8} py={4}>
 			<Container padding={0}>
@@ -16,13 +15,9 @@ const Navbars = () => {
 						<IButtons
 							custom={{
 								icon: colorMode === 'light' ? <FiMoon /> : <FiSun />,
-								_active: {
-									bg: 'sunAlpha.200',
-								},
-								_hover: {
-									bg: 'sunAlpha.200',
-								},
 								color: useColorModeValue('sun.300', 'sun.100'),
+								_active: {bg: 'sunAlpha.200'},
+								_hover: {bg: 'sunAlpha.200'},
 								onClick: toggleColorMode,
 							}}
 						/>

@@ -133,7 +133,7 @@ const Divider = {
 	variants: {
 		solid: {
 			rounded: 'full',
-			borderWidth: 3,
+			borderWidth: 2,
 			my: 3,
 		},
 	},

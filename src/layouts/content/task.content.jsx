@@ -1,21 +1,22 @@
-import { WidgetBody, WidgetHeader } from '../../components/widget.comp';
-import { FiCheckCircle, FiCircle, FiPlus } from 'react-icons/fi';
+import { WidgetBody, WidgetFooter, WidgetHeader } from '../../components/widget.comp';
+import { FiCheckCircle, FiCircle, FiPlus, FiList, FiClock } from 'react-icons/fi';
+import { IButtons, Buttons } from '../../components/button.comp';
 import { EventContext } from '../../context/event.context';
-import { Heading, HStack, VStack } from '@chakra-ui/react';
+import { Heading, HStack, VStack, WrapItem } from '@chakra-ui/react';
 import { DataContext } from '../../context/data.context';
-import { IButtons } from '../../components/button.comp';
 import Lists from '../../components/list.comp';
 import { useContext } from 'react';
+import Skeletons from '../../components/skeleton.comp';
 
 const Tasklist = () => {
-	const { dataDB, dataServices } = useContext(DataContext);
+	const { dataDB, dataServices, dataLoaded } = useContext(DataContext);
 	const { setTabs, handleEvent } = useContext(EventContext);
 
 	return (
 		<VStack w={'full'} gap={3}>
 			<WidgetHeader>
 				<HStack alignItems={'center'} justifyContent={'space-between'}>
-					<Heading size={'md'} fontWeight={'medium'}>task list</Heading>
+					<Heading size={'md'} fontWeight={'medium'} textTransform={'uppercase'}>task list</Heading>
 					<IButtons
 						custom={{
 							_active: { bg: 'indigoAlpha.200' },
@@ -41,12 +42,16 @@ const Tasklist = () => {
 									title: items.title,
 									key: i
 								}
-								return <Lists {...listProp}/>
+								return <Skeletons isLoaded={dataLoaded}> <Lists {...listProp}/> </Skeletons>
 							})
 						) : <Heading opacity={0.2} size={'xl'} fontWeight={'medium'}>no task :)</Heading>
 					}
 				</VStack>
 			</WidgetBody>
+			<WidgetFooter>
+				<HStack justifyContent={'space-between'}>
+				</HStack>
+			</WidgetFooter>
 		</VStack>
 	);
 };

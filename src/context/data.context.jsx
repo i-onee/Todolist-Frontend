@@ -10,6 +10,7 @@ const config = {
 }
 
 const DataProvider = ({ children }) => {
+	const [ dataLoaded, setDataLoaded ] = useState(false);
 	const url = `${config.vercel}/${config.endpoint}`;
 	const [ dataDB, setDataDB ] = useState({
 		data: [],
@@ -71,7 +72,7 @@ const DataProvider = ({ children }) => {
 		};
 	};
 	return (
-		<DataContext.Provider value={{ dataDB, dataServices }}>
+		<DataContext.Provider value={{ dataDB, dataServices, dataLoaded }}>
 			{children}
 		</DataContext.Provider>
 	);

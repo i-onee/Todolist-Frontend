@@ -12,7 +12,7 @@ const Createlist = () => {
 		<VStack w={'full'} gap={3}>
 			<WidgetHeader>
 				<HStack alignItems={'center'} justifyContent={'space-between'}>
-					<Heading size={'md'} fontWeight={'medium'}>create task</Heading>
+					<Heading size={'md'} fontWeight={'medium'} textTransform={'uppercase'}>create task</Heading>
 					<IButtons
 						custom={{
 							_active: {bg: 'indigoAlpha.200'},

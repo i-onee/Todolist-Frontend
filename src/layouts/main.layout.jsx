@@ -1,4 +1,4 @@
-import { HStack, TabPanels, TabPanel, Tabs, useColorModeValue, VStack, Tab } from '@chakra-ui/react';
+import { HStack, TabPanels, TabPanel, Tabs, useColorModeValue, VStack } from '@chakra-ui/react';
 import { EventContext } from '../context/event.context';
 import { Widget } from '../components/widget.comp';
 import Sections from '../components/section.comp';

@@ -1,11 +1,11 @@
-import { Box, useColorModeValue, VStack } from '@chakra-ui/react';
+import { Box, useColorModeValue } from '@chakra-ui/react';
 
 const Widget = (props) => {
 	const { children } = props;
 	const config = {
 		bg: useColorModeValue('light.100', 'dark.700'),
-		minH: '26.3rem',
 		rounded: 'md',
+		boxShadow: '2xl',
 		maxW: 'xl',
 		w: 'full',
 		px: 4,

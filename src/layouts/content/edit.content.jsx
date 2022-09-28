@@ -12,7 +12,7 @@ const EditTask = () => {
 		<VStack w={'full'} gap={3}>
 			<WidgetHeader>
 				<HStack alignItems={'center'} justifyContent={'space-between'}>
-					<Heading size={'md'} fontWeight={'medium'}>edit task</Heading>
+					<Heading size={'md'} fontWeight={'medium'} textTransform={'uppercase'}>edit task</Heading>
 					<IButtons
 						custom={{
 							_active: { bg: 'lightBlueAlpha.200' },

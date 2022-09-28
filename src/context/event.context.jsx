@@ -4,16 +4,19 @@ import { DataContext } from './data.context';
 const EventContext = createContext();
 
 const EventProvider = ({ children }) => {
-
 	const { dataServices } = useContext(DataContext);
-	const [ tabs, setTabs ] = useState(2);
-	const titleRef = useRef(null);
-	const notesRef = useRef(null);
 	const [ defaultValue, setValue ] = useState({
 		title: null,
 		notes: null,
 		id: null,
 	});
+	const [ tabs, setTabs ] = useState(2);
+	const titleRef = useRef(null);
+	const notesRef = useRef(null);
+
+
+
+
 
 	const handleEvent = (key, e) => {
 		switch (key) {

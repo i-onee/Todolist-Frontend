@@ -38,9 +38,10 @@ const EventProvider = ({ children }) => {
 			case 'value':
 				setValue({
 					...defaultValue,
-					title : e.title,
-					notes : e.notes,
-					id    : e._id,
+					complete : e.complete,
+					title 	: e.title,
+					notes 	: e.notes,
+					id    	: e._id,
 				});
 				setTabs(1)
 				break;

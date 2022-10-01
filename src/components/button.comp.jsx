@@ -15,11 +15,11 @@ const Buttons = (props) => {
 const IButtons = (props) => {
 	const { custom } = props;
 	const config = {
-		rounded: 'full',
 		fontSize: '1.1rem',
-		p: 2,
+		rounded: 'full',
 		w: 'auto',
-		h: 'auto'
+		h: 'auto',
+		p: 2,
 	};
 	return (
 		<IconButton {...config} {...custom} />

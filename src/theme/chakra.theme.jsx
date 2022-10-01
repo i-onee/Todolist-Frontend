@@ -3,16 +3,23 @@ import { mode } from '@chakra-ui/theme-tools';
 
 const styles = {
 	global: (props) => ({
-		body: {
+		'html, body': {
 			background: mode('light.400', 'dark.800')(props),
 			color: mode('gray.600', 'gray.400')(props),
 			transitionProperty: 'background',
+			transitionDuration: '0.3s',
 			fontFamily: 'SF Pro UI',
-			transitionDuration: '0.2s',
 			position: 'relative',
 			userSelect: 'none',
-			display: 'block',
+			h: '100%',
 		},
+		'#root': {
+			justifyContent: 'center',
+			flexDirection: 'column',
+			position: 'relative',
+			display: 'flex',
+			maxH: '100vh',
+		}
 	}),
 };
 
@@ -85,17 +92,15 @@ const Button = {
 		fontWeight: 'normal',
 		outline: 'none',
 		rounded: 'full',
-		ml: 0,
-		mr: 0
 	},
 	sizes: {
 		md: { minW: 'fit-content', w: 0, h: 0, px: 0, py: 0 }
 	},
 	variants: {
 		solid: () => ({
-			bg: 'none',
 			_active: false,
 			_hover: false,
+			bg: 'none',
 		}),
 	}
 };
@@ -104,7 +109,7 @@ const Input = {
 	variants: {
 		outline: (props) => ({
 			field: {
-				bg: mode('light.300', 'blackAlpha.500')(props),
+				bg: mode('light.300', 'blackAlpha.600')(props),
 				height: '3rem',
 				border: 0,
 				_focus: {
@@ -118,7 +123,7 @@ const Input = {
 const Textarea = {
 	variants: {
 		outline: (props) => ({
-			bg: mode('light.300', 'blackAlpha.500')(props),
+			bg: mode('light.300', 'blackAlpha.600')(props),
 			height: '13.3rem',
 			resize: 'none',
 			border: 0,
@@ -139,12 +144,25 @@ const Divider = {
 	},
 };
 
+const Tabs = {
+	baseStyle: {
+		tabpanel: {
+			justifyContent: 'space-between',
+			flexDirection: 'column',
+			display: 'flex',
+			h: '26rem',
+			py: 4,
+			px: 0
+		},
+	},
+};
+
 
 
 // declare theme customs
 const theme = extendTheme({
 	colors: { light, sun, sunAlpha, dark, indigo, indigoAlpha, violet, violetAlpha, lightBlue, lightBlueAlpha, leaf, leafAlpha},
-	components: {Button, Input, Textarea, Divider },
+	components: {Button, Input, Textarea, Divider, Tabs },
 	config: {disableTransitionOnChange: false},
 	styles,
 });

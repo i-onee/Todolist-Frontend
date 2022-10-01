@@ -9,20 +9,18 @@ import { useContext } from 'react';
 const Createlist = () => {
 	const { setTabs, handleEvent, titleRef, notesRef } = useContext(EventContext);
 	return (
-		<VStack w={'full'} gap={3}>
+		<>
 			<WidgetHeader>
-				<HStack alignItems={'center'} justifyContent={'space-between'}>
-					<Heading size={'md'} fontWeight={'medium'} textTransform={'uppercase'}>create task</Heading>
-					<IButtons
-						custom={{
-							_active: {bg: 'indigoAlpha.200'},
-							_hover: {bg: 'indigoAlpha.200'},
-							onClick: () => setTabs(2),
-							color: 'indigo.200',
-							icon: <FiLayers/>
-						}}
-					/>
-				</HStack>
+				<Heading size={'md'} fontWeight={'medium'} textTransform={'uppercase'}>create task</Heading>
+				<IButtons
+					custom={{
+						_active: {bg: 'indigoAlpha.200'},
+						_hover: {bg: 'indigoAlpha.200'},
+						onClick: () => setTabs(2),
+						color: 'indigo.200',
+						icon: <FiLayers/>
+					}}
+				/>
 			</WidgetHeader>
 			<WidgetBody>
 				<FormContainer>
@@ -31,20 +29,18 @@ const Createlist = () => {
 				</FormContainer>
 			</WidgetBody>
 			<WidgetFooter>
-				<HStack justifyContent={'center'}>
-					<Buttons
-						custom={{
-							onClick: () => handleEvent('create'),
-							bg: 'indigo.200',
-							color: 'white',
-							rounded: 'md',
-							px: 9,
-							py: 4
-						}}
-					>create</Buttons>
-				</HStack>
+				<Buttons
+					custom={{
+						onClick: () => handleEvent('create'),
+						bg: 'indigo.200',
+						color: 'white',
+						rounded: 'md',
+						px: 9,
+						py: 4
+					}}
+				>create</Buttons>
 			</WidgetFooter>
-		</VStack>
+		</>
 	);
 };
 

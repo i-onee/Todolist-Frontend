@@ -4,11 +4,11 @@ const Widget = (props) => {
 	const { children } = props;
 	const config = {
 		bg: useColorModeValue('light.100', 'dark.700'),
-		rounded: 'md',
+		position: 'relative',
 		boxShadow: '2xl',
-		maxW: 'xl',
+		rounded: 'md',
 		w: 'full',
-		px: 4,
+		px: 8,
 	};
 	return (
 		<Box {...config}>
@@ -20,6 +20,8 @@ const Widget = (props) => {
 const WidgetHeader = (props) => {
 	const { children } = props;
 	const config = {
+		justifyContent: 'space-between',
+		display: 'flex',
 		w: 'full'
 	};
 	return (
@@ -33,9 +35,8 @@ const WidgetBody = (props) => {
 	const { children } = props;
 	const config = {
 		overflowY: 'auto',
-		display: 'block',
 		rounded: 'md',
-		h: '17.6rem',
+		h: '18rem',
 		w: 'full',
 		sx: {
 			'::-webkit-scrollbar': {
@@ -53,7 +54,9 @@ const WidgetBody = (props) => {
 const WidgetFooter = (props) => {
 	const { children } = props;
 	const config = {
-		w: 'full'
+		justifyContent: 'space-between',
+		display: 'flex',
+		w: 'full',
 	};
 	return (
 		<Box {...config}>

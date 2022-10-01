@@ -1,13 +1,13 @@
-import { FormControl, Input, Textarea, VStack } from '@chakra-ui/react';
+import { FormControl, Input, Textarea, Flex } from '@chakra-ui/react';
 
 const FormContainer = (props) => {
 	const { children } = props;
 	return (
 		<form autoComplete={'off'}>
 			<FormControl>
-				<VStack gap={2}>
+				<Flex flexDir={'column'} gap={4}>
 					{children}
-				</VStack>
+				</Flex>
 			</FormControl>
 		</form>
 	);

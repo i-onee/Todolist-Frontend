@@ -1,14 +1,14 @@
-import { Container, Stack } from '@chakra-ui/react';
+import { Container, Box } from '@chakra-ui/react';
 
 const Sections = (props) => {
 	const { children, custom } = props;
 	return (
-		<Stack position={'relative'} display={'block'} {...custom}>
-			<Container maxW={'container.lg'} position={'relative'}>
+		<Box {...custom}>
+			<Container maxW={'container.sm'}>
 				{children}
 			</Container>
-		</Stack>
+		</Box>
 	);
 };
 
-export default Sections;
+export { Sections };

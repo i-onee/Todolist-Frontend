@@ -17,6 +17,7 @@ const EventProvider = ({ children }) => {
 					notes : userRefs.current.cnotes.value,
 				});
 				clearForm();
+				setTabs(2);
 				break;
 
 			case 'check':

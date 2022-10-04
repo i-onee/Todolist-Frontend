@@ -144,6 +144,13 @@ const Divider = {
 	},
 };
 
+const Heading = {
+	baseStyle: {
+		display: 'flex',
+		alignItems: 'center',
+	},
+};
+
 const Tabs = {
 	baseStyle: {
 		tabpanel: {
@@ -162,7 +169,7 @@ const Tabs = {
 // declare theme customs
 const theme = extendTheme({
 	colors: { light, sun, sunAlpha, dark, indigo, indigoAlpha, violet, violetAlpha, lightBlue, lightBlueAlpha, leaf, leafAlpha},
-	components: {Button, Input, Textarea, Divider, Tabs },
+	components: {Button, Input, Textarea, Divider, Tabs, Heading },
 	config: {disableTransitionOnChange: false},
 	styles,
 });

@@ -4,7 +4,7 @@ const FormContainer = (props) => {
 	const { children } = props;
 	return (
 		<form autoComplete={'off'}>
-			<FormControl>
+			<FormControl isRequired>
 				<Flex flexDir={'column'} gap={4}>
 					{children}
 				</Flex>

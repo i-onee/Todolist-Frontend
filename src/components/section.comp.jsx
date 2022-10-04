@@ -11,4 +11,4 @@ const Sections = (props) => {
 	);
 };
 
-export { Sections };
+export default Sections;

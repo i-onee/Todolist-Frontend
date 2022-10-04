@@ -18,7 +18,7 @@ const styles = {
 			flexDirection: 'column',
 			position: 'relative',
 			display: 'flex',
-			maxH: '100vh',
+			h: '100%',
 		}
 	}),
 };

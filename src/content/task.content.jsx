@@ -1,15 +1,12 @@
-import { WidgetBody, WidgetFooter, WidgetHeader } from '../../components/widget.comp';
+import { IButtons, Lists, WidgetBody, WidgetFooter, WidgetHeader } from '../components/components';
 import { FiCheckCircle, FiCircle, FiPlus } from 'react-icons/fi';
-import { EventContext } from '../../context/event.context';
-import { DataContext } from '../../context/data.context';
-import { IButtons } from '../../components/button.comp';
-import { Heading, Text, Flex, useColorModeValue } from '@chakra-ui/react';
-import Lists from '../../components/list.comp';
+import { DataContext, EventContext} from '../context/context';
+import { Heading, Text, Flex } from '@chakra-ui/react';
 import { useContext } from 'react';
 
-const Tasklist = () => {
-	const { dataDB, dataServices } = useContext(DataContext);
+const TaskList = () => {
 	const { setTabs, handleEvent } = useContext(EventContext);
+	const { dataDB } = useContext(DataContext);
 	const totalTask = dataDB.data.length
 	return (
 		<>
@@ -32,9 +29,9 @@ const Tasklist = () => {
 							dataDB.data.map((items, i) => {
 								const listProp = {
 									icheck: items.complete ? <FiCheckCircle /> : <FiCircle />,
-									deletes: () => dataServices('delete', { _id: items._id }),
-									check: () => dataServices('check', { _id: items._id }),
-									show: () => handleEvent('value', items),
+									deletes: () => handleEvent('delete', items),
+									check: () => handleEvent('check', items),
+									show: () => handleEvent('view', items),
 									checked: items.complete && 's',
 									title: items.title,
 									key: i
@@ -52,4 +49,4 @@ const Tasklist = () => {
 	);
 };
 
-export default Tasklist;
+export default TaskList;

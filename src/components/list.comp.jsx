@@ -1,6 +1,6 @@
-import { useColorModeValue, Flex, VStack, Text, Box, } from '@chakra-ui/react';
+import { useColorModeValue, Flex, Text, Box, } from '@chakra-ui/react';
 import { FiTrash, FiEye, } from 'react-icons/fi';
-import { IButtons } from './button.comp';
+import { IButtons } from './components';
 
 const Lists = (props) => {
 	const { title, deletes, show, check, icheck, checked } = props;

@@ -14,27 +14,27 @@ const FormContainer = (props) => {
 };
 
 const Inputs = (props) => {
-	const { refs, pHolder, onChange, value, as } = props;
+	const { refs, pHolder, onChange, value, id } = props;
 	return (
 		<Input
 			placeholder={pHolder}
 			onChange={onChange}
 			value={value}
 			ref={refs}
-			as={as}
+			id={id}
 		/>
 	);
 };
 
 const TextAreas = (props) => {
-	const { refs, pHolder, onChange, value, as } = props;
+	const { refs, pHolder, onChange, value, id } = props;
 	return (
 		<Textarea
 			placeholder={pHolder}
 			onChange={onChange}
 			value={value}
 			ref={refs}
-			as={as}
+			id={id}
 		/>
 	);
 };

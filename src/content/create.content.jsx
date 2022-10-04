@@ -1,13 +1,11 @@
-import { WidgetBody, WidgetHeader, WidgetFooter } from '../../components/widget.comp';
-import { FormContainer, Inputs, TextAreas } from '../../components/form.comp';
-import { Buttons, IButtons } from '../../components/button.comp';
-import { Heading, HStack, VStack } from '@chakra-ui/react';
-import { EventContext } from '../../context/event.context';
+import { Buttons, IButtons, WidgetBody, WidgetHeader, WidgetFooter, FormContainer, Inputs, TextAreas } from '../components/components';
+import { EventContext } from '../context/context';
+import { Heading } from '@chakra-ui/react';
 import { FiLayers } from 'react-icons/fi';
 import { useContext } from 'react';
 
-const Createlist = () => {
-	const { setTabs, handleEvent, titleRef, notesRef } = useContext(EventContext);
+const CreateTask = () => {
+	const { setTabs, handleEvent, userRefs } = useContext(EventContext);
 	return (
 		<>
 			<WidgetHeader>
@@ -24,8 +22,8 @@ const Createlist = () => {
 			</WidgetHeader>
 			<WidgetBody>
 				<FormContainer>
-					<Inputs refs={titleRef} pHolder={'title'} />
-					<TextAreas refs={notesRef} pHolder={'notes'}  />
+					<Inputs id={'ctitle'} refs={ ref => userRefs.current.ctitle = ref } pHolder={'title'} />
+					<TextAreas id={'cnotes'} refs={ ref => userRefs.current.cnotes = ref } pHolder={'notes'}  />
 				</FormContainer>
 			</WidgetBody>
 			<WidgetFooter>
@@ -44,4 +42,4 @@ const Createlist = () => {
 	);
 };
 
-export default Createlist;
+export default CreateTask;

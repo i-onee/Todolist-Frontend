@@ -1,7 +1,7 @@
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
 import ReactMarkdown from 'react-markdown';
 
-const MarkDown = (props) => {
+const MdPreview = (props) => {
 	const { children } = props;
 	return (
 		<ReactMarkdown
@@ -12,4 +12,4 @@ const MarkDown = (props) => {
 	);
 };
 
-export default MarkDown;
+export default MdPreview;

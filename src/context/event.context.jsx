@@ -4,72 +4,78 @@ import { DataContext } from './data.context';
 const EventContext = createContext();
 
 const EventProvider = ({ children }) => {
-	const { dataServices } = useContext(DataContext);
-	const [ defaultValue, setValue ] = useState({
-		title: null,
-		notes: null,
-		id: null,
-	});
+	const { dataServices, dataDB, setDataDB } = useContext(DataContext);
 	const [ tabs, setTabs ] = useState(2);
-	const titleRef = useRef(null);
-	const notesRef = useRef(null);
-
-
-
-
+	const userRefs = useRef({});
 
 	const handleEvent = (key, e) => {
 		switch (key) {
+
 			case 'create':
 				dataServices('create', {
-					title : `${titleRef.current.value}`,
-					notes : `${notesRef.current.value}`,
+					title : userRefs.current.ctitle.value,
+					notes : userRefs.current.cnotes.value,
 				});
 				clearForm();
 				break;
+
+			case 'check':
+				const check = dataDB.data.map( v => v._id === e._id ? { ...v, complete: !v.complete } : v );
+				dataServices('check', e);
+				setDataDB({
+					...dataDB,
+					data: check,
+				})
+				break;
+
 			case 'update':
+				const update = dataDB.data.map(v => v._id === e._id ? {
+					...v,
+					title: userRefs.current.etitle.value,
+					notes: userRefs.current.enotes.value
+				} : v);
+				setDataDB({
+					...dataDB,
+					data: update,
+				});
 				dataServices('update', {
-					title : defaultValue.title,
-					notes : defaultValue.notes,
-					_id	: defaultValue.id,
+					_id	: e._id,
+					title : userRefs.current.etitle.value,
+					notes : userRefs.current.enotes.value,
+				});
+				setTabs(2);
+				break;
+			
+			case 'delete':
+				const deleted = dataDB.data.filter(v => v._id !== e._id);
+				dataServices('delete', { _id: e._id });
+				setDataDB({
+					...dataDB,
+					data: deleted,
+				});
+				break;
+
+			case 'view':
+				userRefs.current.etitle.value = e.title;
+				userRefs.current.enotes.value = e.notes;
+				setDataDB({
+					...dataDB,
+					view: e
 				});
 				setTabs(1);
-				break;
-			case 'value':
-				setValue({
-					...defaultValue,
-					complete : e.complete,
-					title 	: e.title,
-					notes 	: e.notes,
-					id    	: e._id,
-				});
-				setTabs(1)
-				break;
-			case 'title':
-				setValue({
-					...defaultValue,
-					title : e.target.value,
-				});
-				break;
-			case 'notes':
-				setValue({
-					...defaultValue,
-					notes : e.target.value,
-				});
 				break;
 		};
 	};
 
 	const clearForm = () => {
-		titleRef.current.value = null;
-		notesRef.current.value = null;
+		userRefs.current.ctitle.value = '';
+		userRefs.current.cnotes.value = '';
 	};
+
 	return (
 		<EventContext.Provider value={{
-			defaultValue,
 			handleEvent,
-			notesRef,
-			titleRef,
+			userRefs,
 			setTabs,
 			tabs,
 		}}>

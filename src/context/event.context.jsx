@@ -46,7 +46,7 @@ const EventProvider = ({ children }) => {
 				});
 				setTabs(2);
 				break;
-			
+
 			case 'delete':
 				const deleted = dataDB.data.filter(v => v._id !== e._id);
 				dataServices('delete', { _id: e._id });
@@ -64,6 +64,9 @@ const EventProvider = ({ children }) => {
 					view: e
 				});
 				setTabs(1);
+				break;
+
+			default:
 				break;
 		};
 	};

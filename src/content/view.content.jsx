@@ -1,6 +1,5 @@
 import { WidgetBody, WidgetHeader, WidgetFooter, IButtons, MdPreview, Badges, Headings } from '../components/components';
 import { EventContext, DataContext } from '../context/context';
-import { Heading, Wrap } from '@chakra-ui/react';
 import { FiLayers, FiEdit3 } from 'react-icons/fi';
 import { useContext } from 'react';
 

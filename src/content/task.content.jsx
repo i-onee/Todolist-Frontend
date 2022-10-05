@@ -1,7 +1,7 @@
 import { IButtons, Lists, WidgetBody, WidgetFooter, WidgetHeader, Badges, Headings } from '../components/components';
 import { FiCheckCircle, FiCircle, FiPlus } from 'react-icons/fi';
 import { DataContext, EventContext} from '../context/context';
-import { Heading, Flex } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { useContext } from 'react';
 
 const TaskList = () => {

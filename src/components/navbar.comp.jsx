@@ -1,6 +1,6 @@
 import { useColorModeValue, useColorMode, Flex, Box, Image } from '@chakra-ui/react';
 import { FiSun, FiMoon } from 'react-icons/fi';
-import { IButtons } from './button.comp';
+import { IButtons } from './components';
 
 const Navbars = () => {
 	const { colorMode, toggleColorMode } = useColorMode();

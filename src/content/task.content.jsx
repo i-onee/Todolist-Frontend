@@ -1,7 +1,7 @@
-import { IButtons, Lists, WidgetBody, WidgetFooter, WidgetHeader } from '../components/components';
+import { IButtons, Lists, WidgetBody, WidgetFooter, WidgetHeader, Badges, Headings } from '../components/components';
 import { FiCheckCircle, FiCircle, FiPlus } from 'react-icons/fi';
 import { DataContext, EventContext} from '../context/context';
-import { Heading, Text, Flex } from '@chakra-ui/react';
+import { Heading, Flex } from '@chakra-ui/react';
 import { useContext } from 'react';
 
 const TaskList = () => {
@@ -11,7 +11,7 @@ const TaskList = () => {
 	return (
 		<>
 			<WidgetHeader>
-				<Heading size={'md'} fontWeight={'medium'} textTransform={'uppercase'}>task list</Heading>
+				<Headings size={'md'} tTransform={'uppercase'}>task list</Headings>
 				<IButtons
 					custom={{
 						_active: { bg: 'indigoAlpha.200' },
@@ -38,12 +38,12 @@ const TaskList = () => {
 								}
 								return <Lists {...listProp}/>
 							})
-						) : <Heading opacity={0.2} size={'xl'} fontWeight={'medium'}>no task :)</Heading>
+						) : <Headings size={'xl'} align={'center'} opacity={0.1}>no task :)</Headings>
 					}
 				</Flex>
 			</WidgetBody>
 			<WidgetFooter>
-				<Text px={2} rounded={'sm'} color={'lightBlue.300'} bg={'lightBlueAlpha.200'}>{ totalTask } task left</Text>
+				<Badges>{ totalTask } task left</Badges>
 			</WidgetFooter>
 		</>
 	);

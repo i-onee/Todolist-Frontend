@@ -1,6 +1,5 @@
-import { Buttons, IButtons, WidgetBody, WidgetHeader, WidgetFooter, FormContainer, Inputs, TextAreas } from '../components/components';
+import { Buttons, IButtons, WidgetBody, WidgetHeader, WidgetFooter, FormContainer, Inputs, TextAreas, Headings } from '../components/components';
 import { EventContext } from '../context/context';
-import { Heading } from '@chakra-ui/react';
 import { FiLayers } from 'react-icons/fi';
 import { useContext } from 'react';
 
@@ -9,7 +8,7 @@ const CreateTask = () => {
 	return (
 		<>
 			<WidgetHeader>
-				<Heading size={'md'} fontWeight={'medium'} textTransform={'uppercase'}>create task</Heading>
+				<Headings size={'md'} tTransform={'uppercase'}>create task</Headings>
 				<IButtons
 					custom={{
 						_active: {bg: 'indigoAlpha.200'},
@@ -32,7 +31,6 @@ const CreateTask = () => {
 						onClick: () => handleEvent('create'),
 						bg: 'indigo.200',
 						color: 'white',
-						rounded: 'md',
 						px: 9,
 						py: 4
 					}}

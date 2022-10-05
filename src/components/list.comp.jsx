@@ -1,12 +1,12 @@
-import { useColorModeValue, Flex, Text, Box, } from '@chakra-ui/react';
+import { useColorModeValue, Flex, Box } from '@chakra-ui/react';
+import { IButtons, Headings } from './components';
 import { FiTrash, FiEye, } from 'react-icons/fi';
-import { IButtons } from './components';
 
-const Lists = (props) => {
+const Lists = props => {
 	const { title, deletes, show, check, icheck, checked } = props;
 	return (
-		<Box bg={useColorModeValue('light.300', 'blackAlpha.600')} display={'block'} rounded={'md'} w={'full'} px={2} py={4}>
-			<Flex justifyContent={'space-between'} alignItems={'center'} gap={0.5}>
+		<Box bg={useColorModeValue('light.300', 'blackAlpha.600')} display={'block'} rounded={'md'} w={'full'} px={2} py={3}>
+			<Flex justifyContent={'space-between'} alignItems={'center'} gap={1}>
 				<IButtons
 					custom={{
 						_active: {bg: 'leafAlpha.200'},
@@ -15,11 +15,7 @@ const Lists = (props) => {
 						onClick: check,
 						icon: icheck,
 					}}/>
-				<Flex flexDir={'column'} w={'full'}>
-					<Text fontWeight={'medium'} fontSize={'lg'} noOfLines={1} as={checked}>
-						{title}
-					</Text>
-				</Flex>
+				<Headings size={'sm'} as={checked}> { title } </Headings>
 				<IButtons
 					custom={{
 						_active: {bg: 'lightBlueAlpha.200'},

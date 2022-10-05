@@ -1,6 +1,5 @@
-import { Buttons, IButtons, FormContainer, Inputs, TextAreas, WidgetBody, WidgetHeader, WidgetFooter } from '../components/components';
+import { Buttons, IButtons, FormContainer, Inputs, TextAreas, WidgetBody, WidgetHeader, WidgetFooter, Headings } from '../components/components';
 import { EventContext, DataContext } from '../context/context';
-import { Heading } from '@chakra-ui/react';
 import { FiEye } from 'react-icons/fi';
 import { useContext } from 'react';
 
@@ -10,7 +9,7 @@ const EditTask = () => {
 	return (
 		<>
 			<WidgetHeader>
-				<Heading size={'md'} fontWeight={'medium'} textTransform={'uppercase'}>edit task</Heading>
+				<Headings size={'md'} tTransform={'uppercase'}>edit task</Headings>
 				<IButtons
 					custom={{
 						_active: { bg: 'lightBlueAlpha.200' },
@@ -33,7 +32,6 @@ const EditTask = () => {
 						onClick: () => handleEvent('update', dataDB.view),
 						bg: 'indigo.200',
 						color: 'white',
-						rounded: 'md',
 						px: 9,
 						py: 4
 					}}

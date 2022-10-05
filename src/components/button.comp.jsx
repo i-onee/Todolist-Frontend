@@ -1,8 +1,9 @@
 import { Button, IconButton } from '@chakra-ui/react';
 
-const Buttons = (props) => {
+const Buttons = props => {
 	const { children, custom } = props;
 	const config = {
+		rounded: '5px',
 		fontSize: 'sm',
 	};
 	return (
@@ -12,7 +13,7 @@ const Buttons = (props) => {
 	);
 };
 
-const IButtons = (props) => {
+const IButtons = props => {
 	const { custom } = props;
 	const config = {
 		fontSize: '1.1rem',
@@ -21,9 +22,7 @@ const IButtons = (props) => {
 		h: 'auto',
 		p: 2,
 	};
-	return (
-		<IconButton {...config} {...custom} />
-	);
+	return <IconButton {...config} {...custom} />
 };
 
 export { Buttons, IButtons };

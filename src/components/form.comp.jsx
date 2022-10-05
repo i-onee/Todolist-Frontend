@@ -1,6 +1,6 @@
 import { FormControl, Input, Textarea, Flex } from '@chakra-ui/react';
 
-const FormContainer = (props) => {
+const FormContainer = props => {
 	const { children } = props;
 	return (
 		<form autoComplete={'off'}>
@@ -13,7 +13,7 @@ const FormContainer = (props) => {
 	);
 };
 
-const Inputs = (props) => {
+const Inputs = props => {
 	const { refs, pHolder, onChange, value, id } = props;
 	return (
 		<Input
@@ -26,7 +26,7 @@ const Inputs = (props) => {
 	);
 };
 
-const TextAreas = (props) => {
+const TextAreas = props => {
 	const { refs, pHolder, onChange, value, id } = props;
 	return (
 		<Textarea

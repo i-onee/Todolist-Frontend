@@ -7,6 +7,7 @@ const Widget = props => {
 		position: 'relative',
 		boxShadow: '2xl',
 		rounded: 'md',
+		my: 'auto',
 		w: 'full',
 		px: 8,
 	};
@@ -25,13 +26,15 @@ const WidgetHeader = props => {
 };
 
 const WidgetBody = props => {
-	const { children } = props;
+	const { children, sx } = props;
 	const config = {
-		overflowY: 'auto',
+		boxSizing: 'border-box',
+		position: 'relative',
 		rounded: 'md',
 		h: '18rem',
 		w: 'full',
-		sx: {
+		sx: sx,
+		__css: {
 			'::-webkit-scrollbar': {
 				display: 'none'
 			},

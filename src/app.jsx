@@ -1,4 +1,4 @@
-import { DataProvider, EventProvider } from './context/context';
+import { DataProvider, EventProvider } from './context/@context';
 import { ChakraProvider } from '@chakra-ui/react';
 import MainLayout from './layouts/main.layout';
 import theme from './theme/chakra.theme';

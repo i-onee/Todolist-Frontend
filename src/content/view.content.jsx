@@ -1,5 +1,5 @@
-import { WidgetBody, WidgetHeader, WidgetFooter, IButtons, MdPreview, Badges, Headings } from '../components/components';
-import { EventContext, DataContext } from '../context/context';
+import { WidgetBody, WidgetHeader, WidgetFooter, IButtons, MdPreview, Badges, Headings } from '../components/@components';
+import { EventContext, DataContext } from '../context/@context';
 import { FiLayers, FiEdit3 } from 'react-icons/fi';
 import { useContext } from 'react';
 
@@ -9,7 +9,7 @@ const ViewTask = () => {
 	return (
 		<>
 			<WidgetHeader>
-				<Headings size={'md'} tTransform={'lowercase'}>{dataDB.view.title}</Headings>
+				<Headings size={'xl'} tTransform={'lowercase'}>{dataDB.view.title}</Headings>
 				<IButtons
 						custom={{
 							_active: { bg: 'lightBlueAlpha.200' },
@@ -30,7 +30,7 @@ const ViewTask = () => {
 					}}
 				/>
 			</WidgetHeader>
-			<WidgetBody>
+			<WidgetBody sx={{overflowY: 'scroll'}}>
 				<MdPreview children={dataDB.view.notes} />
 			</WidgetBody>
 			<WidgetFooter>

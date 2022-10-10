@@ -14,7 +14,6 @@ const styles = {
 			h: '100%',
 		},
 		'#root': {
-			justifyContent: 'center',
 			flexDirection: 'column',
 			position: 'relative',
 			display: 'flex',
@@ -107,30 +106,37 @@ const Button = {
 
 const Input = {
 	variants: {
-		outline: (props) => ({
+		outline: {
 			field: {
-				bg: mode('light.300', 'blackAlpha.600')(props),
-				height: '3rem',
+				rounded: 0,
 				border: 0,
+				p: 0,
+				h: '3rem',
+				bg: 'none',
 				_focus: {
 					boxShadow: 'none',
 				},
 			},
-		}),
+		},
 	},
 };
 
 const Textarea = {
 	variants: {
-		outline: (props) => ({
-			bg: mode('light.300', 'blackAlpha.600')(props),
-			height: '13.3rem',
+		outline: {
 			resize: 'none',
+			h: '12.6rem',
+			bg: 'none',
+			rounded: 0,
 			border: 0,
+			p: 0,
 			_focus: {
 				boxShadow: 'none'
 			},
-		}),
+			'::-webkit-scrollbar': {
+				display: 'none'
+			},
+		},
 	},
 };
 
@@ -145,16 +151,27 @@ const Divider = {
 };
 
 const Tabs = {
-	baseStyle: {
-		tabpanel: {
-			justifyContent: 'space-between',
-			flexDirection: 'column',
-			display: 'flex',
-			h: '26rem',
-			py: 4,
-			px: 0
-		},
-	},
+	variants: {
+		unstyled: {
+			root: {
+				h: 'full',
+				position: 'relative'
+			},
+			tabpanels: {
+				h: 'full',
+				position: 'relative'
+			},
+			tabpanel: {
+				position: 'relative',
+				flexDir: 'column',
+				display: 'flex',
+				h: 'full',
+				gap: 2,
+				px: 0,
+				py: 4
+			}
+		}
+	}
 };
 
 

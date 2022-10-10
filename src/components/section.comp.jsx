@@ -1,13 +1,11 @@
-import { Container, Box } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
 
 const Sections = props => {
-	const { children, custom } = props;
+	const { children, sx } = props;
 	return (
-		<Box {...custom}>
-			<Container maxW={'container.sm'}>
-				{children}
-			</Container>
-		</Box>
+		<Container sx={sx}>
+			{children}
+		</Container>
 	);
 };
 

@@ -1,5 +1,5 @@
 import { useColorModeValue, Flex, Box } from '@chakra-ui/react';
-import { IButtons, Headings } from './components';
+import { IButtons, Headings } from './@components';
 import { FiTrash, FiEye, } from 'react-icons/fi';
 
 const Lists = props => {
@@ -15,7 +15,7 @@ const Lists = props => {
 						onClick: check,
 						icon: icheck,
 					}}/>
-				<Headings size={'sm'} as={checked}> { title } </Headings>
+				<Headings size={'lg'} as={checked}> { title } </Headings>
 				<IButtons
 					custom={{
 						_active: {bg: 'lightBlueAlpha.200'},

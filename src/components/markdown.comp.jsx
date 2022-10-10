@@ -7,7 +7,6 @@ const MdPreview = props => {
 		components: ChakraUIRenderer(),
 		children: children,
 	}
-
 	return <ReactMarkdown {...config} skipHtml/>
 };
 

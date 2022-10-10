@@ -1,5 +1,6 @@
-import { Buttons, IButtons, FormContainer, Inputs, TextAreas, WidgetBody, WidgetHeader, WidgetFooter, Headings } from '../components/components';
-import { EventContext, DataContext } from '../context/context';
+import { Buttons, IButtons, FormContainer, Inputs, TextAreas, WidgetBody, WidgetHeader, WidgetFooter, Headings } from '../components/@components';
+import { EventContext, DataContext } from '../context/@context';
+import { Divider } from '@chakra-ui/react';
 import { FiEye } from 'react-icons/fi';
 import { useContext } from 'react';
 
@@ -9,7 +10,7 @@ const EditTask = () => {
 	return (
 		<>
 			<WidgetHeader>
-				<Headings size={'md'} tTransform={'uppercase'}>edit task</Headings>
+				<Headings size={'xl'} tTransform={'uppercase'}>edit task</Headings>
 				<IButtons
 					custom={{
 						_active: { bg: 'lightBlueAlpha.200' },
@@ -22,8 +23,9 @@ const EditTask = () => {
 			</WidgetHeader>
 			<WidgetBody>
 				<FormContainer>
-					<Inputs id={'etitle'} refs={ ref => userRefs.current.etitle = ref}  pHolder={'new title'} />
-					<TextAreas id={'enotes'} refs={ ref => userRefs.current.enotes = ref}  pHolder={'new notes'}  />
+					<Inputs id={'etitle'} refs={ref => userRefs.current.etitle = ref} pHolder={'title'} />
+					<Divider mt={0} mb={4}/>
+					<TextAreas id={'enotes'} refs={ ref => userRefs.current.enotes = ref } pHolder={'notes'}  />
 				</FormContainer>
 			</WidgetBody>
 			<WidgetFooter>
